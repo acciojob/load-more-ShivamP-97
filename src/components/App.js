@@ -13,7 +13,7 @@ const items = [
 const ITEMS_PER_LOAD = 10;
 
 const App = () => {
-  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_LOAD);
+  const [visibleCount, setVisibleCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const loadMoreItems = () => {
@@ -26,12 +26,13 @@ const App = () => {
         Math.min(prev + ITEMS_PER_LOAD, items.length)
       );
       setLoading(false);
-    }, 0);
+    }, 500);
   };
 
   return (
     <div>
       {/* Do not remove the main div */}
+
       <ul>
         {items.slice(0, visibleCount).map((item, index) => (
           <li key={index}>{item}</li>
